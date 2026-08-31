@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"E:/Tropos-Devops","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"},"/var/www/html":{"type":"rsync","guestpath":"/var/www/html","hostpath":"E:/Tropos-Devops/Project-Tropos/frontend-static","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
