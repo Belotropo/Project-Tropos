@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Detalles de producto de la colección Tropos.">
+    <meta name="theme-color" content="#f5f6fa">
+    <title>Producto — Tropos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="shop.js" defer></script>
+  </head>
+  <body data-page="product">
+    <div class="announcement"><p>HECHO PARA MOVERTE A TU MANERA <span aria-hidden="true">✳</span> ACTIVEWEAR SIN REGLAS</p></div>
+    <header class="site-header">
+      <a class="wordmark" href="index.html" aria-label="Tropos, ir al inicio">TROPOS</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menú"><span></span><span></span></button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html" aria-current="page">Productos</a>
+        <a href="referidos.html">Referidos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <a class="header-cta cart-link" href="carrito.html">Carrito <span class="cart-count" data-cart-count>0</span></a>
+    </header>
+    <div class="shop-notice" data-shop-notice role="status" aria-live="polite"></div>
+    <main class="section-wrap page-main">
+      <nav class="breadcrumbs" aria-label="Ruta de navegación">
+        <a href="index.html">Inicio</a><span aria-hidden="true">/</span><a href="productos.html">Productos</a><span aria-hidden="true">/</span><span data-product-breadcrumb>Detalle</span>
+      </nav>
+      <div data-product-detail></div>
+    </main>
+    <footer class="site-footer">
+      <a class="wordmark wordmark-footer" href="index.html">TROPOS</a>
+      <p>Muévete como eres. <span>Hecho con intención en Colombia.</span></p>
+      <a class="back-top" href="productos.html">Volver a productos ↑</a>
+      <small>PROTOTIPO ACADÉMICO · PRODUCTO Y PRECIO ILUSTRATIVOS · SIN PAGOS REALES. :v</small>
+    </footer>
+  </body>
+</html>

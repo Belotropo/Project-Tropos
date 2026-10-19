@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Revisa los productos conceptuales de tu carrito Tropos.">
+    <meta name="theme-color" content="#f5f6fa">
+    <title>Carrito — Tropos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="shop.js" defer></script>
+  </head>
+  <body data-page="cart">
+    <div class="announcement"><p>HECHO PARA MOVERTE A TU MANERA <span aria-hidden="true">✳</span> ACTIVEWEAR SIN REGLAS</p></div>
+    <header class="site-header">
+      <a class="wordmark" href="index.html" aria-label="Tropos, ir al inicio">TROPOS</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menú"><span></span><span></span></button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="referidos.html">Referidos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <a class="header-cta cart-link" href="carrito.html" aria-current="page">Carrito <span class="cart-count" data-cart-count>0</span></a>
+    </header>
+    <div class="shop-notice" data-shop-notice role="status" aria-live="polite"></div>
+    <main class="section-wrap page-main">
+      <div class="page-heading">
+        <p class="eyebrow">TU SELECCIÓN</p>
+        <h1>Tu <em>carrito.</em></h1>
+        <p>Los artículos se guardan en este navegador para que puedas volver a ellos.</p>
+      </div>
+      <div data-cart-content></div>
+    </main>
+    <footer class="site-footer">
+      <a class="wordmark wordmark-footer" href="index.html">TROPOS</a>
+      <p>Muévete como eres. <span>Hecho con intención en Colombia.</span></p>
+      <a class="back-top" href="productos.html">Seguir explorando ↑</a>
+      <small>PROTOTIPO ACADÉMICO · EL CARRITO ES DEMOSTRATIVO; NO SE PROCESAN PAGOS NI PEDIDOS. :v</small>
+    </footer>
+  </body>
+</html>

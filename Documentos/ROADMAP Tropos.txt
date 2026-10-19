@@ -1,0 +1,538 @@
+ROADMAP TEMARIO DE TODO EL CURSO DEVOPS Y ADSO
+
+Decoding DevOps – Temario con descripciones (Introduction → GitOps Project)
+Curso de Imran Teli (Udemy). Las descripciones son las que trae la página; las lecciones sin descripción quedan solo con el título. Se excluye la lección final Resumes. Los agrupadores numerados los puse yo según el contenido, porque la página no trae los nombres de las 32 secciones.
+
+🏗️ Cómo leer esta versión el temario de arriba y de abajo está intacto; lo único nuevo son los sub-bullets 🏗️ Tropos, que dicen qué construir en tu proyecto cuando llegues a esa lección.
+
+Qué es Tropos (según lo que ya definimos) un proyecto académico y vehículo de aprendizaje DevOps: una tienda original de ropa deportiva con una propuesta de membresía VIP, inspirada en ese modelo de negocio, pero sin copiar marcas ni contenido. La aplicación tendrá frontend web, backend Python con Django y base de datos MariaDB. Hoy el laboratorio usa dos VM CentOS Stream 9, web01 y db01, en red privada. La meta técnica del roadmap es llevarla gradualmente a AWS y Kubernetes (EKS), con Docker, Terraform, Helm, CI/CD y GitOps. Django fue elegido porque Marco prefiere Python; los detalles de cómo servir Django en cada fase se decidirán antes de desplegarlo.
+
+Las 7 fases 1 Cimientos locales (Vagrant, Linux, Bash) · 2 Contenedores (Docker) · 3 AWS · 4 CICD · 5 Terraform (y Ansible) · 6 Kubernetes y Helm · 7 GitOps y observabilidad. Ojo este curso enseña AWS antes que Docker a fondo, así que en el temario verás la Fase 3 antes que la parte pesada de la Fase 2 (secciones 23 y 24); sigue el orden del temario.
+
+Supuestos (no he visto tu código) los nombres de carpetas y archivos (tropos, tropos.sql, tropos-web, etc.) son nombres sugeridos; ajústalos a tu estructura real. Regla de trabajo no pases a la siguiente lección hasta que el paso de Tropos de la actual funcione.
+
+1. Introducción y herramientas previas
+Introduction — Build a solid DevOps foundation by mastering Linux, virtualization, networking, and scripting. Connect AWS, Jenkins, GitHub, Terraform, and other DevOps tools to drive projects.
+🏗️ Tropos (Fase 1 · Cimientos locales) Define Tropos como una app de tres capas (frontend, backend Python/Django y MariaDB) que se desplegará gradualmente siguiendo el roadmap.
+Crea una carpeta de trabajo y una libreta de bitácora (un TROPOS-LOG.md) donde anotes cada paso que completes.
+What is DevOps — Explore how DevOps accelerates software delivery through automation and collaboration between development and operations. Contrast waterfall with agile and see a fully automated SDLC that shortens cycles and improves reliability.
+Q & A — practice devops by doing, troubleshoot with error messages, check typos, and post detailed questions in the lecture's q&a with screenshots and steps, while the course stays updated.
+What is Continuous Integration — Continuous integration is an automated DevOps process that builds, tests, and packages code changes from a centralized version control system like GitHub, producing artifacts for deployment and testing.
+What is Continuous Delivery
+DevOps Quiz
+Course Material
+Tools Prerequisite Information — Install essential tools with Chocolatey and Homebrew, configure virtualization with VirtualBox and VMware Fusion, and set up GitHub, Docker Hub, Sonarcloud, and AWS free tier accounts.
+🏗️ Tropos (Fase 1 · Cimientos locales) Deja instalados los que usarás con Tropos desde ya VirtualBox, Vagrant, Git y VS Code. Docker y las demás vendrán cuando el curso las pida.
+Chocolatey for Windows
+Homebrew for MacOS — Learn to install Homebrew on macOS using brew.sh, paste the command in the terminal, and use brew to install tools like Maven, JDK, and Vagrant.
+Installing Softwares
+Tools Prerequisites for Centos 9, RHEL9 & Rocky Linux
+Tools Prerequisites for Ubuntu 24
+Signups
+🏗️ Tropos (Fase 1 · Cimientos locales) Crea las cuentas que Tropos va a usar GitHub (repositorio del código) y Docker Hub (donde guardarás las imágenes de Tropos más adelante).
+AWS Setup — Set up an AWS free tier account, enable MFA on the root user, create an IAM admin user, and configure CloudWatch billing alarms with SNS notifications.
+🏗️ Tropos (Fase 3 · AWS) Esta cuenta será el terreno donde vivirá Tropos. Activa MFA y la alarma de facturación antes de crear nada, para que te avise si un recurso olvidado genera cobro.
+Outro — Prepare for a smooth DevOps learning journey by confirming prerequisites, activating your tools, and completing the VM setup as you unpack the remaining materials.
+2. Virtualización y Vagrant
+Welcome to virtualization
+What is Virtualization
+Introduction
+VM-Manually (Windows & MacOS Intel chip) — Set up two virtual machines manually—CentOS and Ubuntu—by enabling virtualization in BIOS, disabling Hyper-V features, configuring VirtualBox, bridging network adapters, and using SSH to access the VMs.
+VM-Automatically (Windows & MacOS Intel chip) — Use vagrant to automate virtual machine creation, provisioning, and cleanup. Configure boxes from vagrant cloud with a vagrantfile and run commands like vagrant up, vagrant ssh, and vagrant destroy.
+🏗️ Tropos (Fase 1 · Cimientos locales) Mantén dos máquinas CentOS Stream 9: web01 para la aplicación y el frontend, y db01 para MariaDB, comunicadas por una red privada.
+Levántalas con vagrant up y entra a cada una con vagrant ssh.
+VM on MacOS M1 chip — Learn to set up macOS virtual machines on Apple Silicon using VMware Fusion and Vagrant, creating Ubuntu and CentOS VMs via the command line with Rosetta and brew workflows.
+Vagrant & Virtualbox
+🏗️ Tropos (Fase 1 · Cimientos locales) Comprueba que web01 y db01 se ven por la IP privada (ping de una a otra). Si no se ven, aún no sigas.
+Outro — Set up your lab and practice the command line to build a strong foundation for Linux and Vagrant concepts, and learn to create a virtual machine manually and automatically.
+3. Linux
+Introduction to Linux
+Linux Intro questions
+Commands and File systems — Navigate linux file systems and practice essential commands using vagrant vms. Learn about root and user directories, bin, etc, proc, boot, and navigating with cd, pwd, ls, and cat.
+🏗️ Tropos (Fase 1 · Cimientos locales) Identifica dónde se alojan los archivos del frontend y de la aplicación en web01, y dónde MariaDB guarda sus datos en db01. No asumas que el código Django debe vivir en el document root de Apache.
+Test Basic Command in Linux
+More Commands (mkdir, cp, mv, touch etc)
+Vim editor — install and run vim on linux, including centos and ubuntu, then master its three modes, editing, saving, quitting, copying and pasting with yy and p, undo, and search with .
+Test vim editor
+File Types
+Test File types
+Filters — Learn linux filtering and redirection with grep, grep -i, -R, and piping, plus viewing and editing data using less, head, tail, sed, and awk.
+Test filters command
+Redirections
+Test Redirection
+Users and Groups
+Test Users & Group
+File permissions — Learn how Linux file ownership and permissions work, using rwx, chown, and chmod (symbolic and numeric), with group management in a DevOps context.
+🏗️ Tropos (Fase 1 · Cimientos locales) Revisa propietarios y permisos de los directorios de Tropos para que cada servicio acceda solo a lo que necesita; evita permisos 777 y no asumas que Apache debe ser dueño del código Django.
+Test File Permissions
+Sudo — Master sudo usage and safe sudoers management switch to root with sudo -i as vagrant, edit sudoers via visudo, and grant non-interactive privileges through etcsudoers.d for devops groups.
+🏗️ Tropos (Fase 1 · Cimientos locales) Crea un usuario devops con sudo en web01 y db01; con él harás el despliegue de Tropos en lugar de usar root.
+Sudo quiz
+Package Management
+🏗️ Tropos (Fase 1 · Cimientos locales) Prepara en web01 Python y un entorno aislado para las dependencias de Django. En db01 instala MariaDB Server. Decide el servidor/proxy de la aplicación cuando llegues a desplegar Django.
+Package Management Quiz
+Services
+🏗️ Tropos (Fase 1 · Cimientos locales) Usa systemd para iniciar y habilitar MariaDB en db01. En web01, verifica Apache como ejercicio de servicio web y, cuando se defina el despliegue Django, administra también el proceso de aplicación y el servidor/proxy que se elija.
+Services Quiz
+Processes — Analyze Linux processes with top and ps commands, learn pid and ppid, forking, zombie and orphan states, and use kill, awk, and xargs to manage them.
+Processes quiz
+Archiving — Archive and unarchive files using tar and zip, create gzipped tarballs with -czvf, extract with -x -C, and back up logs such as varlogjenkins for disk space management.
+🏗️ Tropos (Fase 1 · Cimientos locales) Haz tu primer respaldo de Tropos un tar.gz de la carpeta del código y un dump de la base de datos con mysqldump.
+Ubuntu commands
+Linux OS Quiz
+Linux Commands
+Outro — Build confidence with the command line and Linux, then dive into hosting websites and blogs through hands-on DevOps activities.
+4. Git, Vagrant avanzado y despliegue de sitios web
+Introduction — Learn Git as a distributed version control system, compare centralized and distributed models, and manage local and remote repositories with clone, push, and pull.
+🏗️ Tropos (Fase 1 · Cimientos locales) Entra a la carpeta con el código de Tropos y ejecuta git init. Crea el repositorio tropos en GitHub y agrega un .gitignore (sin contraseñas ni archivos pesados).
+Versioning — Initialize a local git repository, track changes with staging and commits, configure user identity, and push to a remote GitHub repository, mastering branches and versioning workflows.
+🏗️ Tropos (Fase 1 · Cimientos locales) Haz el primer commit con el frontend, el backend Python/Django y el esquema o datos SQL de Tropos; súbelo a GitHub.
+Branches & More
+🏗️ Tropos (Fase 1 · Cimientos locales) Trabaja con dos ramas main (estable) y dev (donde pruebas). Todo cambio nuevo de Tropos nace en dev.
+Rollback — Learn to rollback changes in git using reset, revert, and checkout; compare changes with diff, manage staged and committed states, and use reset --hard and head revert as needed.
+🏗️ Tropos (Fase 1 · Cimientos locales) Introduce en una rama de prueba un error controlado en Tropos, por ejemplo en Python, y practica cómo identificarlo y revertir el cambio con Git.
+Git Ssh Login — Switch from https password authentication to ssh key login for git remotes by generating ssh keys, uploading the public key to GitHub, and cloning via ssh.
+🏗️ Tropos (Fase 1 · Cimientos locales) Configura clave SSH para GitHub la vas a necesitar luego para pipelines y para los repositorios de GitOps.
+Git Tags, Semantic Versioning & More
+🏗️ Tropos (Fase 1 · Cimientos locales) Etiqueta la versión actual de Tropos como v0.1.0. Cada hito grande (Docker, AWS, Kubernetes) merece su etiqueta.
+Setup Github Copilot
+Git Commands
+Vagrant-vms
+Vagrant IP, RAM & CPU
+Vagrant Sync Directories
+Provisioning
+Website Setup — Set up and manage Linux web servers, install httpd on CentOS, build a lamp stack on Ubuntu, deploy WordPress and html templates, and automate with Vagrant provisioning.
+🏗️ Tropos (Fase 1 · Cimientos locales) Despliega el frontend de Tropos en web01 y comprueba desde el navegador del host que responde por la IP privada. El backend Django se verificará por separado cuando esté construido y desplegado.
+Wordpress Setup — Set up an Ubuntu 20 VM with a LAMP stack and deploy a WordPress template, configure Apache2 and MySQL, update wp-config.php, and access WordPress via the VM IP.
+🏗️ Tropos (Fase 1 · Cimientos locales) En db01 crea la base de datos y un usuario propio para Tropos. Configura Django en web01 para conectarse a db01 por la IP privada, importa el esquema/datos y prueba login y catálogo.
+Automate Website setup — Automate website setup using infrastructure as code with a vagrant file to provision a finance site and a WordPress template, including provisioning commands, IP address configuration, and deployment steps.
+Automate Wordpress Setup — Automate WordPress setup with Vagrant and infrastructure as code, provisioning MySQL and Apache, obtaining the VM IP, and deploying the site.
+🏗️ Tropos (Fase 1 · Cimientos locales) Escribe provision-web.sh y provision-db.sh con los pasos que hiciste a mano (instalar, configurar, importar SQL) y enlázalos en el Vagrantfile.
+Copilot AI for Coding — Master Copilot for coding while reviewing AI-generated content to avoid overreliance. Build a Vagrant-based workspace with provisioning scripts for WordPress and test everything in a safe environment.
+Multi VM Vagrant file — Master multi-vm vagrantfile concepts by defining multiple vms in one file, configuring private ips, hostnames, provisioning, and managing apps across web01, web02, and db01.
+🏗️ Tropos (Fase 1 · Cimientos locales) Entregable de la Fase 1 un solo Vagrantfile con web01 y db01, IPs privadas, hostnames y provisioning. Prueba con vagrant destroy y vagrant up Tropos debe quedar funcionando sin tocar nada.
+Systemctl & Tomcat 10 — Master systemctl by creating a systemd Tomcat service and enabling boot. Configure a non-root Tomcat user, Java 17, and startup.sh path in the systemd file.
+IAC Quiz
+5. Variables, JSON y YAML
+Introduction — Explore python variables and data structures strings, integers, lists, tuples, and dictionaries, and convert them to json and yaml for devops data exchange.
+Variables & Python DS — Learn basic bash variables, printing with echo, and Python data structures including strings, lists, tuples, and dictionaries. Explore indexing, slicing, and a preview of JSON and YAML.
+JSON & YAML
+🏗️ Tropos (Fase 1 · Cimientos locales) Mantén las credenciales de MariaDB fuera del código Django y pásalas mediante configuración externa o variables de entorno; luego se gestionarán adecuadamente en Docker y Kubernetes.
+6. Proyecto VProfile (multi-VM)
+Welcome to the Project
+Introduction
+VM Setup — Set up a multi-VM development environment with a vagrant file by cloning the project, switching to the local branch, and bringing up five VMs (db, memcache, rabbitmq, tomcat, nginx).
+MySQL Setup
+Memcache Setup — Install memcached, start and enable the service, modify its configuration to listen on all interfaces (0.0.0.0) for remote connections in a Tomcat-backed stack, and restart memcached.
+RabbitMQ Setup — Learn how to set up RabbitMQ server for a queuing service. This covers enabling the repository, installing RabbitMQ, starting and enabling the service, and adding a test user.
+App setup — Configure Tomcat 10 via systemctl, create a Tomcat user, install JDK and Maven, build the project with Maven, and deploy the ROOT.war to Tomcat webapps.
+Nginx Setup
+Validate — Validate the end-to-end deployment by verifying nginx forwards to tomcat, logging in with admin_vp, and confirming database, rabbitmq, and memcache connectivity.
+🏗️ Tropos (Fase 1 · Cimientos locales) Haz una lista de validación: el frontend responde, Django puede leer y escribir en MariaDB, el login funciona y el catálogo carga.
+Automated - Introduction
+Automated - Code
+Automated - Execution — Automate stack provisioning with a single vagrant up, running db, memcache, rabbitmq, app01, and web01 provisioning scripts for a repeatable, infrastructure-as-code deployment.
+🏗️ Tropos (Fase 1 · Cimientos locales) Úsalo como molde tu objetivo es que un solo vagrant up levante Tropos completo con datos.
+Vprofile Project quiz
+7. Redes
+ISO
+Understanding Networks & IP — Classify networks by distance, from LAN to WAN, and cover switches, routers, NAT, and firewalls; explain IPv4 addresses and private versus public ranges in class a, b, c.
+Protocols, ports etc
+Networking Commands — Explore essential networking commands in Linux and Windows using two virtual machines to test IP addresses, ping, DNS lookups, traceroute, and port status, including ports 80 and 3306.
+🏗️ Tropos (Fase 1 · Cimientos locales) Entre web01 y db01 comprueba con ping y ss el puerto 3306. Abre el 3306 en db01 solo para la IP de web01 y no para todo el mundo.
+Networking Quiz
+8. Contenedores (introducción)
+What are containers
+Container Quiz
+What is Docker
+Docker Intro Quiz
+Hands on Docker Containers — Learn Docker setup on Ubuntu 20 with Vagrant, install Docker Engine, and run hello-world. Manage containers with docker ps, inspect, and port mapping to nginx; build images from a Dockerfile.
+🏗️ Tropos (Fase 2 · Contenedores) Instala Docker en una VM de práctica y ejecuta una imagen oficial de Python con una aplicación sencilla y una imagen de MariaDB. La construcción real de Tropos vendrá en las secciones 23 y 24.
+Docker Quiz
+Vprofile Project on Containers
+🏗️ Tropos (Fase 2 · Contenedores) Anota los componentes que Tropos necesitará contenerizar: aplicación Django, frontend según la arquitectura elegida y MariaDB.
+Microservices
+Microservice Project
+9. Bash Scripting
+Bash Scripts
+Introduction
+VM Setup
+First Script
+Sample Script — Develop a web setup script to automate website deployment by downloading a tooplate health template, extracting to varwwwhtml, and restarting httpd.
+🏗️ Tropos (Fase 1 · Cimientos locales) Escribe deploy-tropos.sh para desplegar la versión actual de Tropos y reiniciar o recargar únicamente los servicios que realmente use el despliegue elegido.
+ChatGPT
+Variables
+Variables Quiz
+Command line arguments — Learn to use command line arguments in scripts with positional parameters like $1 and $2, including a url and artifact name, and know that $0 is the script name.
+🏗️ Tropos (Fase 1 · Cimientos locales) Hazlo recibir parámetros (por ejemplo la carpeta de origen o la rama de git) en lugar de tenerlos escritos dentro.
+System Variables
+Arguments Quiz
+Quotes — Explore bash quotes by comparing double and single quotes, learn how variables print, and master escaping with backslashes to handle dollar signs and other special characters.
+Command Substitution
+Quote quiz
+Exporting Variables — Learn to export variables to persist across shells by using export and placing it in ~.bashrc or etcprofile, so root and other users access a global or user-specific value.
+🏗️ Tropos (Fase 1 · Cimientos locales) Usa variables para host, usuario y base de datos de Tropos en tus scripts.
+Variable Quiz
+User Input — Learn to capture user input in scripts with read, store it in a variable, and use prompts (-p, -s) for passwords; interactive scripts are often avoided in DevOps.
+Decision Making part1 — Explore decision making in shell scripts by using if, else if, and else blocks to test conditions such as a user input number greater than 100.
+Decision Making part2 — Learn to use else if and elif for multi-condition decision making in shell scripts, counting active interfaces from ip addr show while ignoring loopback with grep -v and -eq-gt.
+Conditions Quiz
+Script For Monitoring
+Loops
+For loop quiz
+While Loops
+Remote Command Execution — Learn to perform remote command execution across web01, web02, and web03 using a script box, configure host mappings, and set up a passwordless devops user for sudo.
+🏗️ Tropos (Fase 1 · Cimientos locales) Haz que el script despliegue Tropos en web01 por SSH desde tu PC, con llaves, sin escribir contraseña.
+SSH Key Exchange — Learn how to switch from password to key-based ssh authentication by generating a key pair with ssh-keygen, distributing public keys via ssh-copy-id, and using the default id_rsa for passwordless login.
+Finale Part1 — this finale shows how to turn a bash script into a multios remote deployment framework using a host inventory, for loops, and ssh to set up web servers.
+Finale Part2
+Autocomplete feature — Leverage GitHub Copilot to write, test, and review Bash scripts in a VM workflow, using VS Code and the Bash IDE extension for AI-assisted scripting.
+Apply Best Practices
+AI Suggestions — Apply shellcheck-driven code improvements—quote variables to prevent globbing, replace backticks with $(...), use read -r, follow Copilot quick fixes, then test on VMs before rollout, and set -euo pipefail.
+Write entire code with AI — Refactor the remote_websetup scripts with functions and local variables, use mapfile to read host lists, and orchestrate tomcat deployment for ubuntu and rpm-based systems.
+🏗️ Tropos (Fase 1 · Cimientos locales) Entregable un script limpio con funciones que despliegue Tropos. Revisa con shellcheck lo que genere la IA antes de usarlo.
+10. AWS Cloud (fundamentos)
+What is Cloud Computing — Explore how cloud computing provides on-demand, pay-as-you-go IT resources via self-service portals, enabling private or public cloud access with services like AWS EC2 and RDS across IaaS, PaaS, and SaaS.
+Introduction
+Ec2 Introduction
+Ec2 Quick Start — Launch an EC2 instance in AWS using Amazon Linux 2023 AMI with free tier t2.micro. Configure a security group for SSH and HTTP, and use user data to start httpd.
+🏗️ Tropos (Fase 3 · AWS) Lanza una EC2 de prueba y publica ahí el frontend de Tropos para comprender el acceso a una aplicación mediante una IP pública.
+More In Ec2 Part1 — Gather requirements, create a key pair and security group, then launch an Ubuntu EC2 instance; configure SSH, open ports 22 and 80, then install Apache and deploy content.
+More in Ec2 Part2
+AWS CLI
+SSM & CloudShell Intro
+EBS — Learn how Elastic Block Store (EBS) provides virtual hard disks and snapshots for EC2, explore volume types like gp3 and provisioned IOPs, and practice attaching and mounting extra storage.
+EBS Snapshots — Explore how ebs snapshots back up and recover volumes through a hands-on lab, creating, attaching, and restoring data. Learn about incremental backups and cross-region snapshot copying.
+ELB Introduction — Explore AWS elastic load balancers, including application, network, gateway, and classic types, and learn how front-end ports map to backend servers to balance web traffic.
+ELB Hands On Part 1
+ELB Hands On Part 2
+Cloudwatch Introduction
+Cloudwatch Hands On
+EFS — Learn how Amazon Elastic File System provides a scalable shared storage using NFS; mount it to EC2 instances with access points, security groups, and fstab for persistent sharing of images.
+Autoscaling Group Introduction
+Autoscaling Group Hands On — Explore autoscaling group hands-on by wiring a launch template, target group, and application load balancer, and configuring health checks, scaling policies, and instance refresh with shared storage using EFS.
+🏗️ Tropos (Fase 3 · AWS) Piensa en Tropos web sin estado (el código) en el grupo de autoescalado; datos en RDS y archivos en S3 o EFS.
+S3 Introduction — Explore Amazon S3, a simple object storage service, learn bucket and object concepts, storage classes, versioning, encryption options, and how to make objects public with ACL and permissions.
+🏗️ Tropos (Fase 3 · AWS) Crea un bucket para las imágenes del catálogo de Tropos (prendas y fotos).
+S3 Website Hosting
+More in S3
+RDS
+🏗️ Tropos (Fase 3 · AWS) Crea una instancia RDS (MariaDB o MySQL) para la base de datos de Tropos e importa tu SQL.
+11. Proyecto AWS Lift & Shift
+Introduction
+Security Group & Keypairs
+EC2 Instances — Provision four EC2 instances for MySQL, Memcache, RabbitMQ, and Tomcat using user data scripts, assign backend and app security groups, and clone the vprofile project from GitHub for deployment.
+🏗️ Tropos (Fase 3 · AWS) Haz un Lift & Shift de Tropos a una EC2 para la aplicación Django, conectada a RDS en lugar de db01. Usa user data para automatizar la preparación del entorno.
+DNS Route 53
+Build and Deploy Artifacts — Build the artifact from source code with Maven, configure AWS CLI and IAM credentials, push to S3, and deploy the war to a Tomcat server on an EC2 instance.
+🏗️ Tropos (Fase 3 · AWS) Tropos usa Python/Django, no Maven. Define qué se despliega (código y dependencias declaradas) y practica entregarlo desde GitHub o mediante un artefacto apropiado.
+Load Balancer & DNS
+🏗️ Tropos (Fase 3 · AWS) Pon un ALB delante de Tropos y apunta tu dominio (belotropo.xyz, que ya tienes en Route 53) al balanceador.
+Autoscaling Group — Create an auto scaling group for the app01 instance using a new AMI and launch template, attach it to the load balancer target group, and enable cpu-based scaling.
+🏗️ Tropos (Fase 3 · AWS) Crea una AMI de la EC2 web de Tropos y úsala en el autoescalado. Prueba apagando una instancia para ver cómo se recupera.
+Validate & Summarize — Validate the final AWS deployment by ensuring a single healthy auto scaling group instance with stickiness and domain access, then perform cleanup of related resources.
+12. Proyecto AWS Re-arquitectura (PaaSSaaS)
+Introduction
+Security Group And Keypairs
+RDS
+Elastic Cache
+Amazon MQ
+DB Initialization
+Beanstalk
+Update on Security Group & ELB
+Build & Deploy Artifact — Collect backend service details (RDS endpoint, Memcached endpoint, RabbitMQ endpoint and credentials), build the vprofile artifact, and deploy to Elastic Beanstalk with a rolling upgrade secured by HTTPS and ACM.
+🏗️ Tropos (Fase 3 · AWS) Opcional: despliega Tropos en Elastic Beanstalk con una plataforma compatible con Python para compararlo con la versión manual. Anota qué te ahorra y qué te quita.
+Cloud front — Learn how AWS CloudFront powers a global content delivery network with edge locations, caching, and a distribution that securely delivers content from your load balancer and domain to users worldwide.
+🏗️ Tropos (Fase 3 · AWS) Pon CloudFront delante de las imágenes de Tropos en S3 para que el catálogo cargue rápido.
+Validate and Summarize
+13. Maven
+Introduction — Discover how Maven drives the Java build process, covering phases from validate to deploy, using pom.xml, managing dependencies, local and remote repositories, and packaging as jar or war.
+🏗️ Tropos (Fase 4 · CICD) Declara las dependencias Python de Django en un manifiesto reproducible (por ejemplo, requirements.txt) y verifica que una instalación limpia pueda preparar la aplicación.
+Maven Hands-on — learn hands-on with maven build tool and NodeJS by cloning a GitHub project, inspecting pom.xml, running mvn validate, test, and install, and handling dependencies, Java versions, and memory issues.
+Maven, NodeJS & AI
+14. Jenkins y CICD
+Introduction
+Installation — Install Jenkins on an Ubuntu EC2 instance, setting up Java OpenJDK 21 to explore CICD tools and compare legacy Jenkins with modern options like GitHub actions, GitLab, and Argo CD.
+Freestyle Vs Pipeline As A Code
+Installing tools in Jenkins — Learn how to configure tools in Jenkins with plugins, installing Maven 3.9 and JDK 17, and managing their paths and installers from Manage Jenkins.
+First Job
+First Build Job — Build and automate a Jenkins freestyle job to fetch code from GitHub, build with Maven, and archive the war artifact, while configuring JDK and Maven versions.
+Agents
+Plugins, Versioning & more — Learn to install and manage Jenkins plugins, implement artifact versioning, and use built-in variables like BUILD_ID and BUILD_TIMESTAMP to drive pipeline code and post-build actions.
+Disk Space Issue
+Flow of Continuous Integration Pipeline — Learn the flow of a continuous integration pipeline with Jenkins, Git, Maven, SonarQube, and Nexus. See code fetched, built, tested, analyzed, and deployed as versioned artifacts under quality gates.
+🏗️ Tropos (Fase 4 · CICD) Diseña el pipeline de Tropos: push a GitHub, comprobaciones estáticas y pruebas de Python, análisis de calidad, build de la imagen Docker y despliegue.
+Steps for Continuous Integration Pipeline
+Jenkins, Nexus & Sonarqube Setup — Set up Nexus and SonarQube on AWS EC2 using user data scripts, install JDK 17, PostgreSQL, and Nginx, tune limits, start services, and access on Nexus 8081 and SonarQube 9000.
+🏗️ Tropos (Fase 4 · CICD) Levanta Jenkins y SonarQube y conecta tu repositorio tropos. Si prefieres GitHub Actions, usa esa opción el plan permite cualquiera de las dos.
+Plugins for CI
+Pipeline As A Code Introduction
+Code Analysis
+Code Analysis Demonstration — Demonstrates adding a Checkstyle analysis stage to a Jenkins pipeline, running Maven, and integrating SonarQube via SonarScanner to publish code quality reports.
+Quality Gates
+🏗️ Tropos (Fase 4 · CICD) Haz que el pipeline falle si SonarQube encuentra vulnerabilidades graves (como las de OWASP) en el código de Tropos.
+Software Repositories Intro (Nexus) — Upload your artifact to the Nexus Sonatype repository, learn to store and version artifacts, and configure a Maven hosted repository for dependencies and Jenkins pipeline integration.
+Nexus PAAC Demo
+Notification, Slack — Learn to configure Slack notifications in a Jenkins pipeline, including installing the Slack plugin, creating a Slack app, and using a post step to alert on success or failure.
+🏗️ Tropos (Fase 4 · CICD) Haz que el pipeline de Tropos te avise por Slack cuando falle o termine.
+CI for Docker  Intro — Demonstrates a docker-based continuous integration workflow with Jenkins, performing code fetch, unit tests, code quality checks with Checkstyle and SonarQube, and building and publishing a docker image to a registry.
+🏗️ Tropos (Fase 4 · CICD) Haz que cada push construya la imagen Docker de Tropos y la suba a Docker Hub o a ECR. Esto se completa cuando tengas el Dockerfile (sección 23).
+Docker PAAC Prereqs info
+Docker PAAC Demo
+Docker CICD Intro
+Docker CICD Code
+AWS ECS Setup
+Docker CICD Demonstration
+Cleanup
+Build Triggers Intro
+Build Triggers Demo
+Authentication & Authorization
+15. GitLab CICD
+Introduction — Explore GitLab as a complete DevSecOps platform with source code management, CICD pipelines, security checks, and project management, usable as SaaS or on-premises.
+Initial Setup — Sign up for GitLab, create a group and project, configure SSH keys, clone the repository into VS Code, and push the initial code while exploring CICD, issues, and project settings.
+First Pipeline
+🏗️ Tropos (Fase 4 · CICD) Opcional replica el mismo pipeline de Tropos en GitLab para comparar. Tu repositorio principal puede seguir en GitHub.
+Variables & More
+Triggers & Rules
+Security & Artifacts — Learn to implement security code scanning in a GitLab CICD pipeline using Trivy and Aqua TV image, covering SAST and software composition analysis, artifact storage, and parallel testing.
+Build And Publish Docker — Build a docker image from a dockerfile and publish it to GitLab container registry using a docker-in-docker CI setup with secure login and maven build steps.
+16. Python para DevOps
+Introduction — Learn the basics of Python for DevOps automation, explore its use with automation tools and cloud services, and set up Python environments, notebooks, and editors like PyCharm and VS Code.
+Python on Linux, Versions & Indentation
+Quotes and Comments — Learn how to use quotes and comments in Python, write strings with single, double, or triple quotes, and distinguish between strings and variables for print statements.
+Variables
+Print Format
+Slicing
+Operators
+Conditions — Learn Python decision making with if, else, and elif, including comparisons, data types, and membership checks on lists, tuples, and dictionaries through user input.
+Loops — Explore how Python loops work, including for loops over strings, lists, and tuples, while loops with termination conditions, nested loops, and managing infinite loops.
+Break & Continue
+Built-in Functions or Methods
+Functions part-1 — Write your own Python functions with def, specify arguments, and return values for reusability. Learn to call functions using positional and keyword arguments, default values, and handling None returns.
+Functions part-2 — Explore how functions handle variable-length arguments with args and kwargs, using examples like order_food and time_activity to process items and keyword pairs.
+Modules
+OS Tasks — Learn to automate Linux tasks with Python for automation by executing system commands, managing users, groups, directories, and SSH with Fabric for remote provisioning.
+🏗️ Tropos (Fase 1 · Cimientos locales) Escribe un script Python que respalde Tropos (código y mysqldump) y compruebe que web01 responde.
+Python Fabric
+Exception Handling — Learn Python exception handling with try, except, and else, handling value errors and zero division errors, validating integer input and printing clear error messages.
+Cloud Interaction with Boto3
+🏗️ Tropos (Fase 3 · AWS) Con boto3 sube las imágenes del catálogo de Tropos a tu bucket S3 y lista lo que hay.
+AI for Cloud Automation
+Copilot AI for Cloud Automation — Master cloud automation with GitHub Copilot by building an AWS deployment step by step using boto3, creating key pairs, security groups, EC2, and a load balancer with modular code.
+Python Scripts
+17. Terraform
+Introduction
+Basics of Terraform
+Code Structure — Learn Terraform code structure and state management, organize resources into multiple files, configure the AWS provider, and build key pairs and security groups with clear state handling.
+Code Structure Part 2
+Plan, Apply, Update & Destroy — Learn by hands-on Terraform workflow init, fmt, validate, plan, apply, and manage AWS EC2 instances, security groups, and key pairs; understand plan vs apply, state files, and safe destruction.
+🏗️ Tropos (Fase 5 · Terraform) Repite en Terraform lo que antes hiciste con clics la EC2 web de Tropos, su security group y su key pair. Termina con terraform destroy.
+Variables
+Provisioners
+Outputs — Create and use terraform output blocks to print resource attributes like public_ip and private_ip from the state, then save them to a text file with local-exec.
+Backend
+🏗️ Tropos (Fase 5 · Terraform) Guarda el estado de Terraform de Tropos en S3, no en tu PC.
+What Next — Explore how to work with Terraform across AWS, manage VPCs, and use registry modules to deploy resources; learn to write your own code or reuse pre-written modules.
+🏗️ Tropos (Fase 5 · Terraform) Usa módulos del registry para la red de Tropos, en lugar de escribir todo desde cero.
+18. Ansible
+Introduction
+Setup Ansible & Infra — Launch a control machine and multiple EC2 hosts, install Ansible on the control node, and connect to CentOS and Ubuntu web and db servers via SSH.
+Inventory & Ping Module — Set up an Ansible inventory in YAML, connect a control machine to targets like web01, web02, and db01 via SSH using private keys, and verify connectivity with the ping module.
+Inventory Part 2 — Learn to scale inventory from single hosts to groups, set host and group variables with priority rules, create nested groups like webservers and dc_oregon, and test connectivity with ansible ping.
+YAML & JSON — Explore JSON and YAML in DevOps, compare readability and structure using Python dictionaries and lists, and learn how Ansible outputs JSON and uses YAML for playbooks.
+Ad Hoc Commands — Learn how to use Ansible ad hoc commands for tasks without writing playbooks, using modules like ping, yum, service, and copy. Understand idempotent behavior and how privilege escalation works.
+Playbook & Modules — Learn to write and structure Ansible playbooks, define plays and tasks, and manage web and db servers with modules like yum and service, and perform syntax checks.
+🏗️ Tropos (Fase 5 · Ansible) Reemplaza tus scripts de aprovisionamiento por un playbook que prepare Python y la aplicación Django en el grupo web y MariaDB Server en el grupo db.
+Modules - Find, Use, Troubleshoot & Repeat
+Ansible Configuration — Create a project-specific ansible.cfg to set inventory, forks, log_path, and host_key_checking false. Learn the configuration priority ansible_config variable, repo-local ansible.cfg, home directory .ansible.cfg, then global etcansibleansible.cfg, and enable privilege escalation.
+Variables & Debug
+Group & Host Variables — Explore inventory based variables in Ansible, including group_vars, host_vars, and all, and master variable precedence from playbook to command line with practical exercises.
+Fact Variables
+Decision Making — Explore provisioning servers with Ansible playbooks across CentOS and Ubuntu, using when conditions, distribution facts, and idempotent tasks to install and start NTPchrony services.
+Loops — Explore using loops in Ansible playbooks to install multiple packages efficiently, using items, dictionaries, and loop constructs like loop and with_items; learn testing, conditions, and documenting options.
+File, copy & template modules
+Handlers — Master Ansible handlers to restart services only when configuration files change, using notify and the changed status, with template usage and CentOS and Ubuntu examples.
+🏗️ Tropos (Fase 5 · Ansible) Usa handlers para reiniciar o recargar los servicios de Tropos solo cuando cambie una configuración que lo requiera.
+Roles
+🏗️ Tropos (Fase 5 · Terraform) Crea los roles tropos-web y tropos-db.
+Ansible for AWS — Learn to manage AWS with Ansible by configuring access keys, installing boto3, and running playbooks to create key pairs and launch EC2 instances, with region and output handling.
+🏗️ Tropos (Fase 5 · Terraform) Usa Ansible para crear la EC2 de Tropos y configurarla en el mismo flujo.
+Vprofile code
+19. Monitoreo y Observabilidad
+Introduction to Monitoring
+Why Monitoring is Essential for DevOps
+Monitoring and Observability Tools — Explore Prometheus, Grafana, Loki, node exporter, and Alloy alert manager to monitor metrics and logs in cloud native architectures, using scraping, PromQL, dashboards, and alerts.
+Setting Up the Monitoring Environment — Set up Grafana, Prometheus, Loki, and a Python Flask app on AWS EC2, configure as services with systemd, and create a complete monitoring and logging stack.
+🏗️ Tropos (Fase 7 · GitOps y observabilidad) Monta Prometheus, Grafana y Loki en su propia instancia, separada de Tropos.
+Loki and Web Server Setup
+Adding a Node to Prometheus — Learn to add a node to Prometheus by configuring node exporter, scraping web server metrics as time-series data, then query with PromQL and visualize alerts in Grafana.
+🏗️ Tropos (Fase 7 · GitOps y observabilidad) Instala node exporter en el servidor web de Tropos y en la base de datos para ver CPU, memoria y disco.
+Understanding PromQL (Prometheus Query Language) — Master PromQL fundamentals by querying Prometheus with instant and range vectors, scalar and string data, and arithmetic, comparison, and logical operators; visualize with Grafana.
+Connecting Grafana & Prometheus
+Integrating Slack for Notifications — Connect Slack to Grafana for alerts by creating a Titan Monitoring workspace and Alerts prod channel, obtaining a webhook URL, and testing a Slack notification via Grafana alerts.
+PromQL for Grafana Dashboards — Master PromQL queries to build organized Grafana dashboards with panels, folders, and rows, and visualize CPU and memory metrics from labeled Prometheus targets.
+Building Grafana Panels and Dashboards — Learn to build Grafana panels and dashboards using Prometheus queries, label-based metrics, and time-series visualizations, including CPU and memory monitoring, HTTP request rates, and dynamic endpoint variables.
+Creating Alerts and Thresholds — Learn to configure thresholds and alerts in Grafana using Prometheus metrics, trigger Slack notifications when disk usage exceeds a set percentage, and fine-tune notification policies.
+🏗️ Tropos (Fase 7 · GitOps y observabilidad) Crea alertas para Tropos (CPU alta, disco lleno, base de datos caída) con aviso a Slack. Tu meta del plan es vigilar CPU, latencia y salud de la base de datos.
+Integrating Loki and Alloy for Logs and Metrics
+20. AWS VPC, Lambda y logs
+VPC Introduction
+VPC Design & Components — Learn to design a basic VPC with public and private subnets, Internet gateway and NAT gateways, route tables, and a bastion host for access, ensuring high availability across zones.
+🏗️ Tropos (Fase 3 · AWS) Diseña la VPC de Tropos subredes públicas para el balanceador y bastion, y subredes privadas para web y base de datos (la BD aislada, igual que db01 en tu red privada local).
+VPC Setup Details
+Default VPC
+Create VPC
+Subnets
+Internet Gateway — Create an internet gateway for the default VPC, attach it to the V profile VPC via the console or AWS CLI, and prepare to connect it to public subnets.
+Route Tables — Learn to create and attach route tables to a VPC, route 0.0.0.00 to the internet gateway, enable public IPs on public subnets, and configure NAT gateway for private subnets.
+NAT Gateway — Nat gateway with a static elastic ip in a public subnet, route private subnets through it, and enable dns host names for instances.
+Bastion Host — Learn how to create a bastion host in a vpc to securely access private subnet resources via ssh, using a public subnet instance, proper security groups, and key pairs.
+🏗️ Tropos (Fase 3 · AWS) Entra a los servidores privados de Tropos solo a través del bastion.
+Website in VPC — Launch a website on an instance in a private subnet behind a bastion host, using a tooplate template, and expose it via an application load balancer in the public subnet.
+Peering
+Terraform for VPC Setup
+🏗️ Tropos (Fase 5 · Terraform) Escribe toda la VPC de Tropos en Terraform entregable de la Fase 5.
+Ec2 Logs
+AWS Lambda
+Links buildspec
+Links S3 policy
+21. AWS CICD (CodePipeline  CodeBuild)
+Introduction — Learn AWS CICD using CodePipeline and CodeBuild to migrate from GitHub to Bitbucket, fetch code, build artifacts, and deploy to Elastic Beanstalk with RDS for the Vprofile app.
+Beanstalk — Create a Beanstalk environment for the Vprofile app, including a key pair, Tomcat 10 with Coretto 21 on Amazon Linux 2023, and a two-to-four, load-balanced setup with session stickiness.
+RDS & App Setup on Beanstalk — Create an Amazon RDS instance for the vprofile application in the bean stack, using MySQL 8.0.35 free tier, with accounts database and 3306 access via a new security group.
+Code Commit — Create a Bitbucket repo and SSH-based authentication, migrate the vprofile-project from GitHub by cloning, updating remotes, and pushing main and aws-ci branches.
+Code build — Leverage AWS CodeBuild to fetch source from Bitbucket, run builds with a buildspec.yml, produce artifacts stored in an S3 bucket, and monitor via CloudWatch logs.
+Build, Deploy & Code Pipeline
+🏗️ Tropos (Fase 4 · CICD) Opcional la versión AWS-nativa del pipeline de Tropos (CodePipeline y CodeBuild). Úsala solo si quieres comparar con Jenkins o GitHub Actions.
+22. Proyecto GCP
+Introduction to the GCP vProfile Project
+Project Architecture Overview — Outline a GCP project architecture connect private VPCs to Cloud SQL and Memorystore via PSA and VPC peering, then route internet traffic through a load balancer to a Tomcat app.
+Setting Up Your GCP Account & Project — Set up your Google Cloud Platform account, claim the free $300 credit, and create a new project, then use Cloud Shell and gcloud commands to configure it.
+Commands in the Source Code — Follow step-by-step commands in the source code to clone a GitHub project, configure GCP VPC, and run scripted backend and frontend deployments using gcloud commands.
+Configuring Project Variables
+VPC, Subnets & Network Setup
+Firewall Rules & VM Deployment — Manage firewall rules and VM deployment in GCP, creating a bastion host in a public subnet and an app server in a private subnet, using tag-based access.
+Configuring Cloud SQL & Memorystore
+🏗️ Tropos (Fase 3 · AWS) Opcional Cloud SQL ofrece MySQL, así que Tropos se puede llevar a GCP como ejercicio de portabilidad. Prioriza AWS, que es el camino del plan.
+Setting Up Cloud DNS
+Creating a Custom VM Image — Launch a private-subnet vm, install Tomcat and the v profile app, and snapshot it as a custom golden image to drive an auto-scaling managed instance group via an instance template.
+Building a Managed Instance Group (MIG) — Create a managed instance group (MIG) from an instance template and configure auto scaling with CPU and load balancing triggers to run two instances.
+Configuring the Global HTTPHTTPS Load Balancer
+SSL Certificates, HTTPS & Final DNS Setup — Provision a certificate in Google Cloud Certificate Manager, validate DNS authorization with your domain registrar, and configure an HTTPS proxy and forwarding rule for a secure load balancer.
+Summary and Cleanup
+23. Docker (a fondo)
+Introduction
+Docker Setup
+Docker commands & concepts — Explore Docker Hub as the registry for official and custom images, and learn to run containers with a thin read-write layer and port mapping.
+Docker Logs — Learn to troubleshoot docker containers by inspecting images, understanding entrypoint and CMD, and using docker logs to view container output, including practical examples with nginx and mysql.
+Docker volumes
+🏗️ Tropos (Fase 2 · Contenedores) Dale un volumen a MariaDB para que los datos de Tropos no se pierdan al borrar el contenedor.
+Building images — Build custom docker images using a Dockerfile with base images, labels, and instructions like run, add, copy, cmd, and expose. Test, tag, and push to Docker Hub.
+🏗️ Tropos (Fase 2 · Contenedores) Escribe el Dockerfile de la aplicación Django a partir de una imagen base de Python, instala sus dependencias, copia el código y define cómo ejecutarla. Pruébalo y publica la imagen en Docker Hub.
+Entrypoint and CMD — Learn how the Dockerfile instructions entrypoint and cmd differ and work together, including how to pass or override commands and arguments, build and run images, and understand their priorities.
+Docker Compose
+🏗️ Tropos (Fase 2 · Contenedores) Crea docker-compose.yml con tropos-web y tropos-db en una red interna, con la BD sin puerto público.
+Multi Stage Dockerfile — Learn how to use a multistage dockerfile to separate build and runtime artifacts. Automate mvn install and copy only the artifact to a lean app image.
+🏗️ Tropos (Fase 2 · Contenedores) Si el frontend React requiere compilación, usa una etapa de Node para producir los archivos estáticos y decide cómo servirlos junto con la aplicación Django.
+24. Proyecto Docker VProfile containerizado
+Introduction
+Overview of Base Image — Identify the services and versions for a project, including MySQL, Memcache, RabbitMQ, Tomcat, and nginx, then select Docker images and tags from Docker Hub and draft a Dockerfile.
+Dockerhub Setup — Sign up for Docker Hub, log in, and explore creating an organization to collaborate on images, learn about the free plan, and automated builds with notifications.
+🏗️ Tropos (Fase 2 · Contenedores) Sube tus imágenes de Tropos con una etiqueta de versión.
+Setup Docker Engine — Learn to set up a Docker engine on a Vagrant virtual machine by cloning the project, selecting the containers branch, and installing Docker Engine on Ubuntu, including user group setup.
+Dockerhub & Dockerfile References — Explore Dockerfile references from Docker Hub and learn to build, tag, and push multi-image apps (vprofileapp, vprofiledb, vprofileweb) using common instructions like from, copy, run, and expose.
+App Image Dockerfile — Learn to build and deploy a multi-stage Docker file for a Tomcat application by creating skeleton Docker files, building artifacts with Maven, and copying root.war into Tomcat's webapps.
+DB Image Dockerfile — Configure a MySQL docker image (8.0.33) by setting MYSQL_ROOT_PASSWORD and MYSQL_DATABASE, optionally MYSQL_USER and MYSQL_PASSWORD, and copy db_backup.sql to docker-entrypoint-initdb.d for startup initialization.
+🏗️ Tropos (Fase 2 · Contenedores) Para tropos-db parte de la imagen oficial de MariaDB, define base de datos y usuario con variables de entorno, y copia tu SQL a docker-entrypoint-initdb.d para que cargue al arrancar.
+Web Image Dockerfile — learn to build a custom nginx image by copying routing configuration and removing the default config, and deploy memcache and rabbitmq using official images with no changes.
+Docker Compose — Master docker compose by defining a five-container, multi-container setup (app, db, web, memcache, rabbitmq), building three images and pulling two, with volumes, ports, and environment configs.
+🏗️ Tropos (Fase 2 · Contenedores) Entregable de la Fase 2 docker compose up levanta Tropos completo en tu PC y puedes borrar web01 y db01 (vagrant destroy).
+Build and Run
+Summarize — Explore docker-compose and dockerfile to understand containerization, and outline build, deploy, and service steps for a project, including database, memcached, rabbitmq, tomcat, and nginx.
+Containerizing Microservice Project
+Build & Run Microservice App — Build and run a microservice app by using a docker compose file, deploying on an EC2 instance, and orchestrating containers like db, web api, emart api, and nginx api gateway.
+25. Kubernetes
+Introduction
+Minikube for K8s Setup — Learn to set up a local kubernetes cluster with minikube and kops, install chocolatey, minikube, and kubectl, start and test the cluster, deploy a hello minikube deployment, and expose it.
+Kops for K8s Setup
+Objects and Documentation — List of objects, how to manage them & documentation.
+Kube Config
+Pods — Learn how pods serve as the basic unit in Kubernetes, wrapping one or more containers (including sidecars and init containers), define them in yaml, and manage with kubectl.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Crea el pod de tropos-web con la imagen de Docker Hub.
+Namespace — Explore Kubernetes namespaces to group and isolate resources, ensure uniqueness within a namespace, create and manage namespaces, assign resources to specific namespaces, and safely delete a namespace.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Crea el namespace tropos para aislar todo lo del proyecto.
+Different levels of Logging
+Service — expose your pods with kubernetes services nodeport, cluster ip, or load balancer, providing static endpoints and routing traffic from external clients to front-end and back-end pods via label selectors.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Haz un service para tropos-web (accesible) y otro ClusterIP para la base de datos (solo interno).
+Replica Set
+Deployment — Explore deployment in Kubernetes within a DevOps workflow, using declarative updates to roll out new pod images via replica sets, with one-by-one rollouts and easy rollback.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Pasa a Deployment con varias réplicas de tropos-web. Borra un pod a propósito y mira cómo se recrea.
+Command and Arguments — Learn how Dockerfile commands and entrypoints shape container startup behavior. See how to override commands in Kubernetes pod definitions and use env variables to pass arguments.
+Volumes
+Config Map — Explore how to use ConfigMap to inject environment variables and files into pods, manage variables like MySQL database and MySQL root password, and mount ConfigMap data as volumes.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Mueve la configuración no sensible de Tropos (host de BD, nombre de la base) a un ConfigMap.
+Secret — Learn how Kubernetes secrets protect sensitive data by encoding credentials with base64, using secret types (opaque and docker-registry) for pod envs, and pulling from private registries.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Guarda la contraseña de la base de datos de Tropos en un Secret.
+Ingress
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Entra a Tropos por un ingress con nombre de dominio.
+Kubectl CLI & Cheatsheet
+Extras — Explore Kubernetes extras, including taints and tolerations, resource requests and limits, and jobs, cron jobs, and daemonsets, with practical guidance on log collection and monitoring.
+Helm Introduction
+Helm Hands On — Set up a kubernetes cluster with nginx ingress and kubeconfig, then deploy WordPress and MySQL using persistent volumes and helm charts.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Empieza a convertir los manifiestos de Tropos en el chart tropos-chart.
+Helm with AI — Transform Kubernetes definition files into Helm charts using Amazon Queue, configure release names, values.yaml and secrets, deploy WordPress with nginx ingress, and validate with helm lint and upgrade workflows.
+Lens
+Terraform For EKS Setup
+🏗️ Tropos (Fase 5 · Terraform) Crea con Terraform el clúster EKS de Tropos.
+26. Proyecto Kubernetes VProfile en producción
+Introduction — Learn to deploy a containerized vprofile web app on production-grade kubernetes with persistent MySQL data on ebs, enabling high availability, auto-healing, and scalable, platform-independent deployment.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Usa este proyecto como molde tu entregable es lo mismo, pero con Tropos en vez de VProfile.
+Architecture
+Source Code Overview
+Secret
+Persistent Volume for DB [PVC] — Create a persistent volume claim for a database pod and explore Kubernetes storage classes, kOps, and external storage options like ebs or efs for durable data.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Crea el PVC para MariaDB de Tropos con EBS.
+MySQL App
+MySQL Service — Create a cluster IP service named vprodb to connect the MySQL pod via label app vprodb, routing port 3306 to the container so Tomcat resolves the database in application.properties.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Crea el service interno de MariaDB de Tropos (puerto 3306) y configura Django para conectarse usando el nombre del servicio.
+Memcache App & Service — Set up a memcached pod and service in Kubernetes using the memcached docker image, configure deployment and yaml files to have a single replica, and match labels and port 11211.
+RabbitMQ App & Service
+Tomcat App & Service
+Ingress
+K8s Cluster Setup & Source Code
+Deploy App on K8s Cluster — Deploy an nginx ingress controller to provision an AWS load balancer and expose the app through ingress, then configure a PVC with AWS EBS for persistent storage and validate end-to-end.
+🏗️ Tropos (Fase 6 · Kubernetes y Helm) Despliega Tropos completo en el clúster, expónlo con ingress y valida el flujo login, catálogo y carrito. Etiqueta v1.0.0 en git.
+Summarize
+27. Proyecto GitOps (final)
+Introduction
+Architecture
+Git Repository Setup — Set up three private GitHub repositories for infra, helm, and app, configure SSH keys for authentication, and clone them via SSH into your local environment.
+🏗️ Tropos (Fase 7 · GitOps y observabilidad) Separa Tropos en tres repositorios tropos-app (código), tropos-helm (el chart) y tropos-infra (Terraform).
+Helm Charts Part 1
+Helm Charts Part 2
+🏗️ Tropos (Fase 7 · GitOps y observabilidad) Termina tropos-chart con un solo comando se instala web, base de datos, secrets, servicios e ingress.
+CI Pipeline Overview — Create a continuous integration pipeline for the v profile app that updates helm charts with the latest image and tag, and integrates SonarCube scan and ECR deployment.
+Sonar Qube Server — Initialize the vprofile app in VS Code, prepare sonar properties, and commit. Launch an EC2 Ubuntu instance to run a SonarQube server, generate a user token, and configure for CI.
+ECR and IAM
+Github Secrets & Variables
+CICD Pipeline part 1
+CICD Pipeline part 2
+🏗️ Tropos (Fase 7 · GitOps y observabilidad) Con GitHub Actions, cada push a tropos-app prueba el código, construye la imagen, la sube al registro y actualiza la etiqueta en tropos-helm.
+EKS Prereqs
+Terraform Code for EKS
+🏗️ Tropos (Fase 7 · GitOps y observabilidad) Usa aquí el Terraform de EKS de Tropos que ya escribiste, en tropos-infra.
+Argo CD Setup
+Argo App Sync
+🏗️ Tropos (Fase 7 · GitOps y observabilidad) Conecta ArgoCD a tropos-helm el clúster se sincroniza solo con GitHub.
+Completing the whole Setup
+🏗️ Tropos (Fase 7 · GitOps y observabilidad) Como prueba final, cambia una línea de la aplicación Python, haz push y observa la actualización GitOps de Tropos. Añade tableros de Prometheus y Grafana para CPU, latencia y salud de la base de datos.
+Summary
+Checklist del edificio terminado (Tropos)
+Tropos corre en Vagrant con web01 y db01 y se levanta con un solo vagrant up (Fase 1)
+Todo el código vive en GitHub con ramas y etiquetas (Fase 1)
+Existen Dockerfiles y docker-compose.yml, y Tropos corre con un solo comando (Fase 2)
+Tropos corre en AWS con ALB, RDS y S3 (Fase 3)
+Cada push pasa por pruebas y SonarQube (Fase 4)
+Red, servidores y clúster están en Terraform, sin clics (Fase 5)
+Tropos corre en EKS con tropos-chart (Fase 6)
+ArgoCD sincroniza con GitHub y Grafana vigila CPU, latencia y base de datos (Fase 7)

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explora la colección conceptual de activewear Tropos.">
+    <meta name="theme-color" content="#f5f6fa">
+    <title>Productos — Tropos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="shop.js" defer></script>
+  </head>
+  <body data-page="catalog">
+    <div class="announcement"><p>HECHO PARA MOVERTE A TU MANERA <span aria-hidden="true">✳</span> ACTIVEWEAR SIN REGLAS</p></div>
+    <header class="site-header">
+      <a class="wordmark" href="index.html" aria-label="Tropos, ir al inicio">TROPOS</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menú"><span></span><span></span></button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html" aria-current="page">Productos</a>
+        <a href="referidos.html">Referidos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <a class="header-cta cart-link" href="carrito.html">Carrito <span class="cart-count" data-cart-count>0</span></a>
+    </header>
+    <div class="shop-notice" data-shop-notice role="status" aria-live="polite"></div>
+    <main class="page-main section-wrap">
+      <div class="page-heading">
+        <p class="eyebrow">COLECCIÓN TROPOS · CÁPSULA 01</p>
+        <h1>Encuentra tu <em>ritmo.</em></h1>
+        <p>Prendas conceptuales para moverte como eres. Elige una pieza para ver sus detalles.</p>
+      </div>
+      <div class="catalog-controls">
+        <div class="catalog-filter">
+          <label class="field-label" for="product-search">Buscar</label>
+          <input id="product-search" type="search" placeholder="Nombre, categoría o color" autocomplete="off">
+        </div>
+        <div class="catalog-filter">
+          <label class="field-label" for="product-category">Categoría</label>
+          <select id="product-category">
+            <option value="all">Todas las prendas</option>
+            <option value="Tops">Tops</option>
+            <option value="Mallas">Mallas</option>
+            <option value="Capas">Capas</option>
+          </select>
+        </div>
+        <div class="catalog-filter">
+          <label class="field-label" for="product-color">Color</label>
+          <select id="product-color">
+            <option value="all">Todos los colores</option>
+            <option value="Rosa neón">Rosa neón</option>
+            <option value="Azul eléctrico">Azul eléctrico</option>
+            <option value="Negro">Negro</option>
+          </select>
+        </div>
+        <div class="catalog-filter">
+          <label class="field-label" for="product-size-filter">Talla disponible</label>
+          <select id="product-size-filter">
+            <option value="all">Todas las tallas</option>
+            <option>XS</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+            <option>2XL</option>
+          </select>
+        </div>
+        <div class="catalog-filter catalog-price-filter">
+          <label class="field-label" for="product-price-min">Precio mínimo (COP)</label>
+          <input id="product-price-min" type="number" min="0" step="10000" placeholder="Sin mínimo" inputmode="numeric">
+        </div>
+        <div class="catalog-filter catalog-price-filter">
+          <label class="field-label" for="product-price-max">Precio máximo (COP)</label>
+          <input id="product-price-max" type="number" min="0" step="10000" placeholder="Sin máximo" inputmode="numeric">
+        </div>
+        <div class="catalog-filter catalog-sort-filter">
+          <label class="field-label" for="product-sort">Ordenar por</label>
+          <select id="product-sort">
+            <option value="featured">Destacados</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name-asc">Nombre: A a Z</option>
+            <option value="name-desc">Nombre: Z a A</option>
+          </select>
+        </div>
+        <button class="filter-reset" type="button" data-reset-filters>Limpiar filtros</button>
+      </div>
+      <p class="catalog-count" data-catalog-count aria-live="polite"></p>
+      <p class="catalog-validation" data-filter-validation role="status" aria-live="polite"></p>
+      <div class="product-grid catalog-page-grid" data-product-list="catalog"></div>
+      <p class="concept-note">PRECIOS DE DEMOSTRACIÓN · FOTOGRAFÍAS ILUSTRATIVAS DE <a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">UNSPLASH</a> · :v</p>
+    </main>
+    <footer class="site-footer">
+      <a class="wordmark wordmark-footer" href="index.html">TROPOS</a>
+      <p>Muévete como eres. <span>Hecho con intención en Colombia.</span></p>
+      <a class="back-top" href="#">Volver arriba ↑</a>
+      <small>PROTOTIPO ACADÉMICO · NO SE PROCESAN PAGOS NI PEDIDOS REALES. :v</small>
+    </footer>
+  </body>
+</html>

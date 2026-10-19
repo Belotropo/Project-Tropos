@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ponte en contacto con Tropos, concepto colombiano de activewear inclusivo.">
+    <meta name="theme-color" content="#f5f6fa">
+    <title>Contacto — Tropos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="shop.js" defer></script>
+  </head>
+  <body data-page="contact">
+    <div class="announcement"><p>HECHO PARA MOVERTE A TU MANERA <span aria-hidden="true">✳</span> ACTIVEWEAR SIN REGLAS</p></div>
+    <header class="site-header">
+      <a class="wordmark" href="index.html" aria-label="Tropos, ir al inicio">TROPOS</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menú"><span></span><span></span></button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="referidos.html">Referidos</a>
+        <a href="contacto.html" aria-current="page">Contacto</a>
+      </nav>
+      <a class="header-cta cart-link" href="carrito.html">Carrito <span class="cart-count" data-cart-count>0</span></a>
+    </header>
+    <div class="shop-notice" data-shop-notice role="status" aria-live="polite"></div>
+    <main class="section-wrap page-main narrow-main">
+      <div class="page-heading">
+        <p class="eyebrow">HABLEMOS</p>
+        <h1>Contacto <em>Tropos.</em></h1>
+        <p>¿Tienes una pregunta o una idea para compartir? Escribe un mensaje de prueba.</p>
+      </div>
+      <form class="contact-form" data-contact-form>
+        <p class="prototype-callout">Este formulario es una demostración: todavía no envía ni guarda mensajes. :v</p>
+        <label for="contact-name">Tu nombre</label>
+        <input id="contact-name" name="name" autocomplete="name" maxlength="80" required>
+        <label for="contact-email">Tu correo</label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+        <label for="contact-message">Mensaje</label>
+        <textarea id="contact-message" name="message" rows="5" maxlength="2000" required></textarea>
+        <button class="button button-dark" type="submit">Ver vista previa <span aria-hidden="true">↗</span></button>
+        <p class="form-result" data-contact-result role="status" aria-live="polite"></p>
+      </form>
+    </main>
+    <footer class="site-footer">
+      <a class="wordmark wordmark-footer" href="index.html">TROPOS</a>
+      <p>Muévete como eres. <span>Hecho con intención en Colombia.</span></p>
+      <a class="back-top" href="#">Volver arriba ↑</a>
+      <small>PROTOTIPO ACADÉMICO · FORMULARIO DE DEMOSTRACIÓN SIN ENVÍO. :v</small>
+    </footer>
+  </body>
+</html>
