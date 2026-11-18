@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Contacta al equipo Tropos.">
+    <meta name="theme-color" content="#f5f4f0">
+    <title>Contacto — Tropos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="tienda.js" defer></script>
+  </head>
+  <body data-page="contact">
+    <header class="site-header">
+      <a class="wordmark" href="index.html" aria-label="Tropos, inicio">TROPOS<span>®</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menú"><span></span><span></span></button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Navegación principal">
+        <a href="productos.html">Tienda</a><a href="membresia.html">Tropos VIP</a><a href="quiz.html">Encuentra tu estilo</a><a href="favoritos.html">Favoritos</a><a href="cuenta.html">Mi cuenta</a><a href="contacto.html" aria-current="page">Contacto</a>
+      </nav>
+      <a class="cart-link" href="carrito.html" aria-label="Ver carrito">Carrito <span class="cart-count" data-cart-count>0</span></a>
+    </header>
+    <div class="notice" data-notice role="status" aria-live="polite"></div>
+    <main class="section-shell page-main contact-page">
+      <div class="page-heading">
+        <p class="eyebrow">HABLEMOS</p>
+        <h1>Estamos para <em>escucharte.</em></h1>
+        <p>Cuéntanos qué necesitas. Este formulario es una demostración y no envía información.</p>
+      </div>
+      <form class="contact-form" data-contact-form>
+        <label for="contact-name">Nombre</label>
+        <input id="contact-name" name="name" autocomplete="name" maxlength="80" required>
+        <label for="contact-email">Correo electrónico</label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+        <label for="contact-message">Mensaje</label>
+        <textarea id="contact-message" name="message" rows="5" maxlength="1200" required></textarea>
+        <button class="button button-dark" type="submit">Ver vista previa</button>
+        <p class="form-result" data-contact-result role="status" aria-live="polite"></p>
+      </form>
+    </main>
+    <footer class="site-footer">
+      <a class="wordmark footer-wordmark" href="index.html">TROPOS<span>®</span></a><p>Muévete como eres.</p>
+      <div class="footer-links"><a href="productos.html">Tienda</a><a href="membresia.html">Tropos VIP</a><a href="contacto.html">Contacto</a></div>
+      <small>PROTOTIPO DE TIENDA · EL FORMULARIO NO ENVÍA INFORMACIÓN.</small>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Detalles de producto Tropos.">
+    <meta name="theme-color" content="#f5f4f0">
+    <title>Producto — Tropos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="tienda.js" defer></script>
+  </head>
+  <body data-page="product">
+    <header class="site-header">
+      <a class="wordmark" href="index.html" aria-label="Tropos, inicio">TROPOS<span>®</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menú"><span></span><span></span></button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Navegación principal">
+        <a href="productos.html">Tienda</a><a href="membresia.html">Tropos VIP</a><a href="quiz.html">Encuentra tu estilo</a><a href="favoritos.html">Favoritos</a><a href="cuenta.html">Mi cuenta</a><a href="contacto.html">Contacto</a>
+      </nav>
+      <a class="cart-link" href="carrito.html" aria-label="Ver carrito">Carrito <span class="cart-count" data-cart-count>0</span></a>
+    </header>
+    <div class="notice" data-notice role="status" aria-live="polite"></div>
+    <main class="section-shell page-main">
+      <p class="breadcrumb"><a href="productos.html">Tienda</a><span aria-hidden="true">/</span><span data-product-category>Producto</span></p>
+      <div class="product-detail" data-product-detail>
+        <div class="detail-image"><img data-product-image src="" alt=""></div>
+        <section class="detail-copy" aria-labelledby="product-title">
+          <p class="eyebrow" data-product-label></p>
+          <h1 id="product-title" data-product-name></h1>
+          <p class="detail-price" data-product-price></p>
+          <p class="detail-description" data-product-description></p>
+          <p class="credit-eligibility" data-credit-eligibility></p>
+          <label class="size-select">Color
+            <select data-product-color aria-label="Selecciona un color"></select>
+          </label>
+          <label class="size-select">Talla
+            <select data-product-size aria-label="Selecciona una talla"></select>
+          </label>
+          <button class="button button-dark add-to-cart" type="button" data-add-to-cart>Agregar al carrito</button>
+          <button class="favorite-detail" type="button" data-product-favorite>Guardar en favoritos</button>
+          <p class="detail-disclaimer">Artículo de demostración. La disponibilidad y las compras no están activas.</p>
+          <a class="text-link" href="membresia.html">Conoce el crédito Tropos VIP ↗</a>
+        </section>
+      </div>
+      <section class="detail-extra">
+        <h2>Diseñado para tu movimiento.</h2>
+        <p>Las fotografías son ilustrativas, pueden no representar la prenda conceptual y no cambian al seleccionar otro color.</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <a class="wordmark footer-wordmark" href="index.html">TROPOS<span>®</span></a><p>Muévete como eres.</p>
+      <div class="footer-links"><a href="productos.html">Tienda</a><a href="membresia.html">Tropos VIP</a><a href="contacto.html">Contacto</a></div>
+      <small>PROTOTIPO DE TIENDA · NO SE PROCESAN PAGOS NI PEDIDOS.</small>
+    </footer>
+  </body>
+</html>
